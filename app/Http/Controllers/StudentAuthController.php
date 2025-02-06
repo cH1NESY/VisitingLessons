@@ -20,17 +20,24 @@ class StudentAuthController extends Controller
             'email' => 'required|email',
             'name' => 'required',
             'group' => 'required',
-            'lesson_id' => 'required'
+            'lesson_id' => 'required',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'accuracy' => 'required|numeric'
         ]);
 
-        // Создаем запись о посещении
+        // Создаем запись о посещении с геолокацией
         LessonAttendance::create([
             'lesson_id' => $request->lesson_id,
             'student_email' => $request->email,
             'student_name' => $request->name,
             'student_group' => $request->group,
-            'check_in_time' => now()
+            'check_in_time' => now(),
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'accuracy' => $request->accuracy
         ]);
+
 
         return redirect()->route('attendance.success');
     }

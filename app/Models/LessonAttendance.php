@@ -13,7 +13,10 @@ class LessonAttendance extends Model
         'student_email',
         'student_name',
         'student_group',
-        'check_in_time'
+        'check_in_time',
+        'latitude',
+        'longitude',
+        'accuracy'
     ];
 
     public function lesson()
